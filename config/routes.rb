@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :members
   resources :members,only:[:show, :edit, :update]
   get 'menbers' => 'public/members#leave'
   patch 'members' => 'public/members#withdraw'
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :addresses,only:[:index, :create, :destaroy, :edit, :update]
 
   namespace :admin do
+    devise_for :admins
     resources :members,only:[:index, :show, :edit, :update]
     resources :products,only:[:index, :new, :create, :show, :edit, :update]
     root to :'admin/homes#top'
