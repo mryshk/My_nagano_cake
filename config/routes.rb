@@ -3,11 +3,11 @@ Rails.application.routes.draw do
 
   namespace :public do
     resources :members,only:[:show, :edit, :update]
-    get 'menbers' => 'public/members#leave'
+    get 'members' => 'public/members#leave'
     patch 'members' => 'public/members#withdraw'
 
     resources :products,only:[:index, :show]
-    root to :'public/homes#top'
+    root to: 'public/homes#top'
     get 'homes/about' => 'public/homes#about'
 
     resources :cart_products,only:[:create, :update, :index, :destaroy]
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     devise_for :admins
     resources :members,only:[:index, :show, :edit, :update]
     resources :products,only:[:index, :new, :create, :show, :edit, :update]
-    root to :'admin/homes#top'
+    root to: 'admin/homes#top'
     resources :genres,only:[:index, :create, :edit ,:update]
     resources :orders,only:[:show, :update] do
      resources :order_products,only:[:update]
