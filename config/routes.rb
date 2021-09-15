@@ -7,8 +7,8 @@ Rails.application.routes.draw do
     patch 'members' => 'public/members#withdraw'
 
     resources :products,only:[:index, :show]
-    root to: 'public/homes#top'
-    get 'homes/about' => 'public/homes#about'
+    root to: 'homes#top'
+    get 'homes/about' => 'homes#about'
 
     resources :cart_products,only:[:create, :update, :index, :destaroy]
     delete 'cart_products' => 'public/cart_products#destaroy_all'
