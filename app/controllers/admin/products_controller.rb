@@ -9,6 +9,10 @@ class Admin::ProductsController < ApplicationController
     redirect_to admin_products_path
   end
 
+  def index
+    @products = Product.all
+  end
+
   private
 
   def product_params
