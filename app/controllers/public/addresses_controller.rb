@@ -2,7 +2,7 @@ class Public::AddressesController < ApplicationController
 
 
   def index
-    @addresses = current_member.address
+    
     @address = Address.new
   end
  

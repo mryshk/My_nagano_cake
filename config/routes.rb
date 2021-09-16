@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :members
+
+  devise_for :admins, controllers: {
+    sessions:      'admin/sessions',
+    passwords:     'admin/passwords',
+    registrations: 'admin/registrations'
+  }
+  devise_for :members, controllers: {
+    sessions:      'public/sessions',
+    passwords:     'public/passwords',
+    registrations: 'public/registrations'
+  }
 
   namespace :public do
     resources :members,only:[:show, :edit, :update]
@@ -21,12 +31,11 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    devise_for :admins
     resources :members,only:[:index, :show, :edit, :update]
     resources :products,only:[:index, :new, :create, :show, :edit, :update]
     root to: 'homes#top'
     resources :genres,only:[:index, :create, :edit ,:update]
-    resources :orders,only:[:show, :update] do
+    resources :orders,only:[:index, :show, :update] do
      resources :order_products,only:[:update]
     end
   end
