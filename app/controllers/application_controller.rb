@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+
+
   def after_sign_in_path_for(resource)
       if member_signed_in?
         public_root_path(resource)
@@ -16,11 +18,14 @@ class ApplicationController < ActionController::Base
     new_admin_session_path
   end
 
+
   protected
 
   def configure_permitted_parameters
-     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :first_name_kana, :last_name_kana, :postal_code, :address, :phone_number])
+
+     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :first_name_kana, :last_name_kana, :postal_code, :address, :phone_number,:password])
 
     devise_parameter_sanitizer.permit(:sign_in, keys: [:email,:password])
   end
 end
+
