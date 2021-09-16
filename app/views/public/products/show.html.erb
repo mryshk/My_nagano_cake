@@ -23,7 +23,10 @@
         </div>
         <div><%= @product.name %></div>
         <div><%= @product.explanation %></div>
-        <div><%= @product. %></div>
+        <div><%= @product.tax_out_price %></div>
+        <%= link_to　public_cart_products_path(@product),method: :post %>
+        <button class="btn btn-info">カートに入れる</button>
+        <% end %>
       </div>
     </div>
   </div>
