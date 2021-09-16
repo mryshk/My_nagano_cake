@@ -10,7 +10,7 @@
         <tbody>
           <% @genres.each do |genre|  %>
           <tr>
-            <td><%= genre.genre_name %></td>
+            <td class="text-center"><%= genre.genre_name %></td>
           </tr>
           <% end %>
         </tbody>
@@ -25,7 +25,8 @@
             <%= link_to public_product_path(product) do %>
               <%= product.name %>
             <% end %>
-            <%= product.tax_out_price %>
+            <% @product_price = product.tax_out_price * 1.1 %>
+            <%= @product_price.floor %>円（税込）
           <% end %>
         </div>
       </div>

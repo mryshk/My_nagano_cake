@@ -10,7 +10,7 @@
         <tbody>
           <% @genres.each do |genre|  %>
           <tr>
-            <td><%= genre.name %></td>
+            <td class="text-center"><%= genre.genre_name %></td>
           </tr>
           <% end %>
         </tbody>
@@ -23,9 +23,12 @@
         </div>
         <div><%= @product.name %></div>
         <div><%= @product.explanation %></div>
-        <div><%= @product.tax_out_price %></div>
-        <%= link_to　public_cart_products_path(@product),method: :post %>
-        <button class="btn btn-info">カートに入れる</button>
+        <div>
+          <% @product_price = @product.tax_out_price * 1.1 %>
+          <%= @product_price.floor  %>円（税込）
+        </div>
+        <%= link_to public_cart_products_path(product_id: @product.id,member_id: current_member.id), method: :post do %>
+          <button class="btn btn-info">カートに入れる</button>
         <% end %>
       </div>
     </div>
