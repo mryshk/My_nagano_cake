@@ -20,8 +20,7 @@ class Public::CartProductsController < ApplicationController
   end
 
   def destroy_all
-    @cart_products = CartProduct.all
-    @cart_products.destroy
+     CartProduct.destroy_all
      redirect_to public_cart_products_path
   end
 
