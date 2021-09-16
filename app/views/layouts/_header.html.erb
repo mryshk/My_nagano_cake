@@ -15,7 +15,7 @@
           <% if member_signed_in? %>
           <!--カスタマーがログインしている時 -->
           <li class="header-name">
-            ようこそ、<%= last_name(current_member) %>さん！
+            ようこそ、</%= last_name(current_member) %>さん！
           </li>
           <li>
             <%= link_to "マイページ", public_member_path(current_member), class: "btn  btn-outline-dark mr-5" %>
