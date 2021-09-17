@@ -12,7 +12,7 @@ class Admin::MembersController < ApplicationController
     @member = Member.find(params[:id])
   end
 
-  def updated
+  def update
      @member = Member.find(params[:id])
      if @member.update(member_params)
         redirect_to admin_member_path
