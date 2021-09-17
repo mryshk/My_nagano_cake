@@ -1,0 +1,35 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+  　<div class='col-md-5'>
+      <p id="notice"></p>
+      <h4>商品詳細</h4>
+      <%= attachment_image_tag @product, :image, size: "250x200" %>
+    </div>
+
+    <div class='col-md-5'>
+      <div class="form-grop">
+        <label for="product-explanation">商品名</label>
+        <%= @product.explanation %>
+      </div>
+      <div class="form-grop">
+        <label for="product-name">商品説明</label>
+        <%= @product.name %>
+   　　 </div>
+   　　<div class="form-grop">
+        <label for="product-genre">ジャンル</label>
+        <%= @product.genre_id %>
+   　  </div>
+   　　<div class="form-grop">
+        <label for="product-price">税込価格（税抜価格）</label>
+        <%= @product.tax_out_price %>
+   　  </div>
+   　　<div class="form-grop">
+        <label for="product-status">販売ステータス</label>
+        <%= @product.is_active %>
+   　  </div>
+   　　<div class="form-grop">
+        <%= link_to "編集する",edit_admin_product_path(@product.id), class: "btn btn-success" %>
+   　  </div>
+    </div>
+  </div>
+</div>

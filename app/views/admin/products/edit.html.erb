@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <p id="notice"></p>
+    <h4>商品編集</h4>
+    <%= form_with model:@product,url:"/admin/products/#{@product.id}", local:true do |f| %>
+     <div class="form-grop">
+      <label for="product-image">商品画像</label>
+      <%= f.attachment_field :image %>
+     </div>
+
+     <% end %>
+
+    </div>
+  </div>
+</div>
