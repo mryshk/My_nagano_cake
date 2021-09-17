@@ -17,19 +17,26 @@
       </table>
     </div>
     <div class="col-9 mt-5">
-      <div class="">
-        <div>
-          <%= attachment_image_tag @product,:image  %>
+      <div class="d-flex" style="margin-bottom:200px;">
+        <div class="product_image  mr-5 ">
+          <%= attachment_image_tag @product,:image ,:fill,300,200,fallback: "no_image.png",size: "300x200" %>
         </div>
-        <div><%= @product.name %></div>
-        <div><%= @product.explanation %></div>
-        <div>
-          <% @product_price = @product.tax_out_price * 1.1 %>
-          <%= @product_price.floor  %>円（税込）
+        <div class="product_text ">
+          <h3 class=""><%= @product.name %></h3>
+          <p class="mt-2"><%= @product.explanation %></p>
+          <h4 class="d-inline-block" style="margin-top:40px;">
+            ¥<% @product_price = @product.tax_out_price * 1.1 %>
+            <%= @product_price.floor  %>
+          </h4><p class="d-inline-block">（税込）</p>
+          <%=  form_with url: public_cart_products_path,method: :post, local: true do |f| %>
+          <%= f.select :quantity,[["1","1"],["2","2"],["3","3"],["4","4"],["5","5"]] ,include_blank: "個数選択" %>
+          <%= f.hidden_field :product_id, :value => @product.id %>
+          <%= f.hidden_field :member_id, :value => current_member.id %>
+          <button class="btn btn-info mt-5 d-block" >カートに入れる
+            <% f.submit  %>
+          </button>
+          <% end %>
         </div>
-        <%= link_to public_cart_products_path(product_id: @product.id,member_id: current_member.id), method: :post do %>
-          <button class="btn btn-info">カートに入れる</button>
-        <% end %>
       </div>
     </div>
   </div>
