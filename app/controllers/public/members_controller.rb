@@ -16,6 +16,6 @@ class Public::MembersController < ApplicationController
 
   private
   def member_params
-    params.require(:member).permit(:first_name,:last_name,:first_name_kana,:last_name_kana,:phone_number,:postal_code,:address,:email).merge(id: current_member.id)
+    params.require(:member).permit(:first_name,:last_name,:first_name_kana,:last_name_kana,:phone_number,:postal_code,:address,:email)
   end
 end

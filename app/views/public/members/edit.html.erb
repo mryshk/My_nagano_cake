@@ -15,11 +15,11 @@
         <p>(メイ)</p><%= f.text_field :last_name_kana ,class: "form-control form-inline "%>
       </div>
       <div class="field">
-        <%= f.label :メールアドレス %><br />
+        <%= f.label :メールアドレス（編集不可） %><br />
         <%= f.email_field :email, autocomplete: "email" ,class: "form-control form-inline "%>
       </div>
       <div class="field">
-        <%= f.label :郵便番号（ハイフンなし） %><br />
+        <%= f.label :郵便番号（ハイフンなし７文字） %><br />
         <%= f.text_field :postal_code ,class: "form-control form-inline "%>
       </div>
       <div class="field">
