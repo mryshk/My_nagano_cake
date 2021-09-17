@@ -1,40 +1,40 @@
-<div class="container　mt-5">
+<div class="container　mt-5 " style="margin-bottom:500px;">
   <div class="row mt-5">
-    <div class="col-3 mt-5">
-      <table class="table">
-        <thead>
-          <tr>
-            <th class="text-center">ジャンル検索</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @genres.each do |genre|  %>
-          <tr>
-            <td class="text-center"><%= genre.genre_name %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+    <div class="col-4 mt-5">
+      <!--ジャンル一覧を部分テンプレートで表示-->
+      <%= render "public/products/genre", gernres: @genres %>
     </div>
-    <div class="col-9 mt-5">
+    <div class="col-8 mt-5">
+      <!--商品詳細画面表示-->
       <div class="d-flex" style="margin-bottom:200px;">
+        <!--商品画像-->
         <div class="product_image  mr-5 ">
           <%= attachment_image_tag @product,:image ,:fill,300,200,fallback: "no_image.png",size: "300x200" %>
         </div>
+        <!--商品概要-->
         <div class="product_text ">
+          <!--商品名-->
           <h3 class=""><%= @product.name %></h3>
+          <!--商品説明-->
           <p class="mt-2"><%= @product.explanation %></p>
+          <!--商品金額-->
           <h4 class="d-inline-block" style="margin-top:40px;">
-            ¥<% @product_price = @product.tax_out_price * 1.1 %>
-            <%= @product_price.floor  %>
+            <% @product_price = @product.tax_out_price * 1.1 %>
+            ￥<%= @product_price.floor.to_s(:delimited)  %>
           </h4><p class="d-inline-block">（税込）</p>
-          <%=  form_with url: public_cart_products_path,method: :post, local: true do |f| %>
-          <%= f.select :quantity,[["1","1"],["2","2"],["3","3"],["4","4"],["5","5"]] ,include_blank: "個数選択" %>
-          <%= f.hidden_field :product_id, :value => @product.id %>
-          <%= f.hidden_field :member_id, :value => current_member.id %>
+          <!--カートに入れるためのフォーム-->
+          <div class="form-group">
+            <%=  form_with url: public_cart_products_path,method: :post, local: true do |f| %>
+            <!--個数選択-->
+            <%= f.select :quantity,[["1","1"],["2","2"],["3","3"],["4","4"],["5","5"]] ,include_blank: "個数選択"%>
+            <%= f.hidden_field :product_id, :value => @product.id %>
+            <%= f.hidden_field :member_id, :value => current_member.id %>
+          </div>
+          <!--カートに入れるボタン-->
           <button class="btn btn-info mt-5 d-block" >カートに入れる
             <% f.submit  %>
           </button>
+
           <% end %>
         </div>
       </div>

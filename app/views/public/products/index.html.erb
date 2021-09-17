@@ -1,33 +1,35 @@
-<div class="container　mt-5">
+<div class="container　mt-5" style="margin-bottom:500px;">
   <div class="row mt-5">
-    <div class="col-3 mt-5">
-      <table class="table">
-        <thead>
-          <tr>
-            <th class="text-center">ジャンル検索</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @genres.each do |genre|  %>
-          <tr>
-            <td class="text-center"><%= genre.genre_name %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+    <div class="col-4 mt-5">
+      <!--ジャンル一覧を部分テンプレートで表示-->
+      <%= render "public/products/genre", gernres: @genres %>
     </div>
-    <div class="col-9 mt-5">
-      <div class="">
-        <h2>商品一覧</h2>（全<%= @products.count  %>件）
-        <div>
-          <% @products.each do |product|  %>
-            <%= attachment_image_tag product,:image  %>
+    <div class="col-8 mt-5">
+      <h2  class="d-inline">商品一覧</h2><p class="d-inline">（全<%= @all_products.count  %>件）</p>
+      <!--商品一覧-->
+      <div id="pub_products">
+        <!--eachのひとかたまり-->
+        <% @products.each do |product| %>
+        <div id="pub_product">
+          <!--商品画像-->
+          <div class="card-img-top">
+            <%= attachment_image_tag product,:image ,:fill,150,100,fallback: "no_image.png",size: "150x100" %>
+          </div>
+          <!--商品ネーム-->
+          <div class="">
             <%= link_to public_product_path(product) do %>
               <%= product.name %>
             <% end %>
+          </div>
+          <!--商品金額-->
+          <div>
             <% @product_price = product.tax_out_price * 1.1 %>
-            <%= @product_price.floor %>円（税込）
-          <% end %>
+            ￥<%= @product_price.floor.to_s(:delimited) %>（税込）
+          </div>
+        </div>
+        <% end %>
+        <div class="mx-auto mt-5">
+          <%= paginate @products %>
         </div>
       </div>
     </div>
