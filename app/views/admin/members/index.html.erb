@@ -1,5 +1,5 @@
 <div class = "container">
-  <h2 class= "head-line title_h2 text-dark p-1 m-5 rounded-lg ">会員一覧</h2>
+  <h2 class= "head-line title_h2 text-dark p-1 m-5 rounded-lg border border-dark">会員一覧</h2>
   <div class = "row">
     <div class = "col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <table class = "table">
@@ -24,7 +24,7 @@
               <td>
                 <% if member.is_deleted == true %>
                   <p><i class="fas fa-bullseye blue"></i>退会済</p>
-                <% else %>
+                <% else  @member.is_deleted == false %>
                   <p><i class="text-success">有効</i></p>
                 <% end %>
               </td>
