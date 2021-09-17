@@ -8,5 +8,5 @@ class Member < ApplicationRecord
   has_many :orders
   has_many :cart_products, dependent: :destroy
 
-
+  validates :postal_code, length: {is: 7}
 end

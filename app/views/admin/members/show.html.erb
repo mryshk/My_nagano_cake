@@ -1,0 +1,66 @@
+<div class = "container">
+  <h2 class= "head-line title_h2 text-dark p-1 m-5 rounded-lg border border-dark">
+    <%= @member.last_name %><%= @member.first_name %>さんの会員詳細
+  </h2>
+  <div class = "row mt-4">
+    <div class = "col-sm-3" >
+      <div class = "field">
+        <p>顧客ID</p>
+      </div><br>
+      <div class = "field">
+        <p>氏名</p>
+      </div><br>
+      <div class = "field">
+        <p>フリガナ</p>
+      </div><br>
+      <div class = "field">
+        <p>郵便番号</p>
+      </div><br>
+      <div class = "field">
+        <p>住所</p>
+      </div><br>
+      <div class = "field">
+        <p>電話番号</p>
+      </div><br>
+      <div class = "field">
+        <p>メールアドレス</p>
+      </div><br>
+      <div class = "field">
+        <p>会員ステータス</p>
+      </div>
+    </div>
+    <div class = "col-sm-6">
+      <div class = "field">
+        <p><%= @member.id %></p>
+      </div><br>
+      <div class = "field">
+        <p><%= @member.last_name %> <%= @member.first_name %></p>
+      </div><br>
+      <div class = "field">
+        <p><%= @member.last_name_kana %> <%= @member.first_name_kana %></p>
+      </div><br>
+      <div class = "field">
+        <p><%= @member.postal_code %></p>
+      </div><br>
+      <div class = "field">
+        <p><%= @member.address %></p>
+      </div><br>
+      <div class = "field">
+        <p><%= @member.phone_number %></p>
+      </div><br>
+      <div class = "field">
+        <p><%= @member.email %></p>
+      </div><br>
+      <div class = "field">
+        <% if @member.is_deleted == true %>
+          <p><i class= "text-light"></i>退会</p>
+        <% elsif @member.is_deleted == false %>
+          <p><i class= "text-success">有効</i></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-md-offset-6 mb-5">
+    <%= link_to "編集する",edit_admin_member_path(@member), class: "glyphicon glyphicon-pencil btn btn-success" %>
+  </div>
+</div>
