@@ -15,6 +15,11 @@
  */
 @import "bootstrap";
 
+
+.pagination {
+  justify-content: center;
+}
+
 #pub_products{
   display:flex;
   flex-wrap:wrap;
@@ -33,7 +38,7 @@
 #top-card-img{
   width:100%;
   height:400px;
- 
+
 }
 #top-card-text{
   position:absolute;
@@ -48,4 +53,11 @@
   font-size:17px;
   background: rgba(255,255,255,0.6);
   font-family: 'Anton', sans-serif;
+}
+
+
+#about-card-img{
+  width:100%;
+  height:400px;
+
 }
