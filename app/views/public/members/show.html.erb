@@ -32,6 +32,15 @@
             <th>メールアドレス</th>
             <td><%= @member.email %></td>
           </tr>
+          <tr>
+            <th>会員情報</th>
+            <td><% if @member.is_deleted  %>
+                <p>退会中</p>
+                <% else %>
+                <p>会員</p>
+                <% end %>
+            </td>
+          </tr>
         </tbody>
       </table>
       <div>
