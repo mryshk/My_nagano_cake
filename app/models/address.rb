@@ -1,5 +1,5 @@
 class Address < ApplicationRecord
 
-  belongs_to :menber
+  belongs_to :member
   validates :postal_code, length: {is: 7}
 end

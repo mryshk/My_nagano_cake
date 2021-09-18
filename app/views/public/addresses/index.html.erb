@@ -19,30 +19,32 @@
         <%= f.submit '新規登録' ,class: "col-xs-2 pull-right btn-lg btn-success" %>
       </div>
       <% end %>
-      <% if @addresses.present? %>
-      <table class = "table table-hover table-bordered">
+      <% if @member_addresses.exists? %>
+      <table class = "table table-hover table-bordered m-5">
         <thead class = "bg-light">
           <tr>
             <th class = "header1">郵便番号</th>
             <th class = "header2">住所</th>
             <th class = "header3">宛名</th>
-            <th colspan = "3"></th>
+            <th></th>
           </tr>
         </thead>
+
         <tbody>
-          <% @addresses.each do |address| %>
+          <% @member_addresses.each do |address| %>
             <tr>
               <td>
                 <%= address.postal_code %>
               </td>
               <td>
-
+                <%= address.address %>
               </td>
               <td>
                 <%= address.name %>
               </td>
               <td>
-                <%= link_to "編集する",edit_public_address_path(address), class: "glyphicon glyphicon-pencil btn-sm btn-success　m-2" %>
+                <%= link_to "編集する", edit_public_address_path(address), class: "btn btn-success" %>
+                <%= link_to "削除する", public_address_path(address), method: :delete, class: "btn btn-danger" %>
               </td>
             </tr>
           <% end %>
