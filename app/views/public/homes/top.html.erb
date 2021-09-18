@@ -1,11 +1,11 @@
-<div class="container　mt-5">
+<div class="container　mt-5" style="margin-bottom:500px;">
   <div class="row mt-5">
     <div class="col-4 mt-5">
       <!--ジャンル一覧を部分テンプレートで表示-->
       <%= render "public/products/genre", gernres: @genres %>
     </div>
     <div class="col-8 mt-5">
-      <div id="top-card"class="card col-10">
+      <div id="top-card"class="card col-11">
         <img id="top-card-img" class="card-img " src="assets/media-138-600x600-1.jpg">
         <div id="top-card-text" class="card-img-overlay text-dark text-center">
           <p>ようこそ、<strong>ながのCAKE</strong>へ！<br>
@@ -40,9 +40,9 @@
         <% end %>
         </div>
       </div>
-      <div class="mt-5">
-        <%= link_to "全ての商品を見る", public_products_path %>
-      </div>
+         <button class=" btn btn-outline-info mt-5">
+          <%= link_to "全ての商品を見る", public_products_path ,class: "text-dark"%>
+        </button>
     </div>
   </div>
 </div>
