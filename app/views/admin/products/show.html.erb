@@ -17,15 +17,19 @@
    　　 </div>
    　　<div class="form-grop">
         <label for="product-genre">ジャンル</label>
-        <%= @product.genre_id %>
+        <%= @product.genre.genre_name %>
    　  </div>
    　　<div class="form-grop">
         <label for="product-price">税込価格（税抜価格）</label>
-        <%= @product.tax_out_price %>
+        <%= @product.tax_out_price %>円
    　  </div>
    　　<div class="form-grop">
         <label for="product-status">販売ステータス</label>
-        <%= @product.is_active %>
+        <% if @product.is_active == true %>
+          <i class="text-success">販売中</i>
+        <% else  product.is_active == false %>
+          <i class="fas fa-bullseye blue">販売中止中</i>
+        <% end %>
    　  </div>
    　　<div class="form-grop">
         <%= link_to "編集する",edit_admin_product_path(@product.id), class: "btn btn-success" %>
