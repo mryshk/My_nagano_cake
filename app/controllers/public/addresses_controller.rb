@@ -21,7 +21,6 @@ class Public::AddressesController < ApplicationController
   end
 
   def edit
-    
   end
 
   def update
