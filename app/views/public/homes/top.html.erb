@@ -5,14 +5,17 @@
       <%= render "public/products/genre", gernres: @genres %>
     </div>
     <div class="col-8 mt-5">
-      <div class="">
-        <p>ようこそ、ながのCAKEへ！<br>
-          このサイトは、ケーキ販売のECサイトになります。<br>
-          会員でない方も商品の閲覧はできますが、<br>
-          購入には会員登録が必要になります。
-        </p>
+      <div id="top-card"class="card col-10">
+        <img id="top-card-img" class="card-img " src="assets/media-138-600x600-1.jpg">
+        <div id="top-card-text" class="card-img-overlay text-dark text-center">
+          <p>ようこそ、<strong>ながのCAKE</strong>へ！<br>
+            このサイトは、ケーキ販売のECサイトになります。<br>
+            会員でない方も商品の閲覧はできますが、<br>
+            購入には会員登録が必要になります。
+          </p>
+        </div>
       </div>
-      <div class="">
+      <div class="mt-5">
         <h3>新着商品</h3>
         <div id="pub_products">
           <!--eachのひとかたまり-->
