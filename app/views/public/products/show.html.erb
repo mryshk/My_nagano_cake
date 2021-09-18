@@ -1,6 +1,7 @@
 <div class="container　mt-5 " style="margin-bottom:500px;">
   <div class="row mt-5">
     <div class="col-4 mt-5">
+
       <!--ジャンル一覧を部分テンプレートで表示-->
       <%= render "public/products/genre", gernres: @genres %>
     </div>
@@ -22,19 +23,25 @@
             <% @product_price = @product.tax_out_price * 1.1 %>
             ￥<%= @product_price.floor.to_s(:delimited)  %>
           </h4><p class="d-inline-block">（税込）</p>
+
           <!--カートに入れるためのフォーム-->
+          <!--ログインした人のみカートに入れるボタンが表示-->
+          <% if member_signed_in? %>
           <div class="form-group">
             <%=  form_with url: public_cart_products_path,method: :post, local: true do |f| %>
             <!--個数選択-->
-            <%= f.select :quantity,[["1","1"],["2","2"],["3","3"],["4","4"],["5","5"]] ,include_blank: "個数選択"%>
+            <%= f.select :quantity,[["1","1"],["2","2"],["3","3"],["4","4"],["5","5"],["6","6"], ["7","7"],["8","8"],["9","9"],["10","10"]],include_blank: "個数選択"%>
             <%= f.hidden_field :product_id, :value => @product.id %>
-            <%= f.hidden_field :member_id, :value => current_member.id %>
+             <%= f.hidden_field :member_id, :value => current_member.id %>
           </div>
           <!--カートに入れるボタン-->
           <button class="btn btn-info mt-5 d-block" >カートに入れる
             <% f.submit  %>
           </button>
-
+          <% end %>
+          <!--未ログインの方はログイン遷移ボタン表示-->
+          <% else %>
+           <%= link_to "ログインしてからカートへ", new_member_session_path, class: "btn btn-success mr-5" %>
           <% end %>
         </div>
       </div>

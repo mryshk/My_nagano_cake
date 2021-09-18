@@ -15,6 +15,11 @@
  */
 @import "bootstrap";
 
+
+.pagination {
+  justify-content: center;
+}
+
 .pagination {
   justify-content: center;
 }
@@ -25,5 +30,38 @@
 #pub_product{
   margin-right:20px;
   margin-top:50px;
+}
+
+#top-card{
+  width:100%;
+  padding:0;
+  position:relative;
+}
+
+#top-card-img{
+  width:100%;
+  height:400px;
+
+}
+#top-card-text{
+  position:absolute;
+  padding-right:20%;
+  padding-left:20%;
+  margin-top:10%;
+}
+
+#top-card-text p{
+  padding-top:50px;
+  height:200px;
+  font-size:17px;
+  background: rgba(255,255,255,0.6);
+  font-family: 'Anton', sans-serif;
+}
+
+
+#about-card-img{
+  width:100%;
+  height:400px;
+
 }
 
