@@ -1,18 +1,19 @@
-<div class="container px-5 px-sm-0">
+<div class="container mt-5 " style="margin-bottom:250px;">
+  <h4>商品詳細</h4>
   <div class="row">
+
+
   　<div class='col-md-5'>
-      <p id="notice"></p>
-      <h4>商品詳細</h4>
-      <%= attachment_image_tag @product, :image, size: "250x200" %>
+　　　<%= attachment_image_tag @product, :image, size: "300x200" %>
     </div>
 
-    <div class='col-md-5'>
+    <div class='col-md-6'>
       <div class="form-grop">
-        <label for="product-explanation">商品名</label>
+        <label for="product-name">商品名</label>
         <%= @product.name %>
       </div>
       <div class="form-grop">
-        <label for="product-name">商品説明</label>
+        <label for="product-explanation">商品説明</label>
         <%= @product.explanation %>
    　　 </div>
    　　<div class="form-grop">
@@ -28,7 +29,7 @@
         <% if @product.is_active == true %>
           <i class="text-success">販売中</i>
         <% else  product.is_active == false %>
-          <i class="fas fa-bullseye blue">販売中止中</i>
+          <p><i class="fas fa-bullseye blue">販売中止中</i></p>
         <% end %>
    　  </div>
    　　<div class="form-grop">
