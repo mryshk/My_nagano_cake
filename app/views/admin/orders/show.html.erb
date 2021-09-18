@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+  <p id="notice"></p>
+    <h4>注文履歴詳細</h4>
+    　<div class="form-grop">
+        <label for="order-name">購入者</label>
+        <%= @order..member.last_name.first_name %>
+      </div>
+      <div class="form-grop">
+        <label for="order-datetime">注文日</label>
+        <%= @order.created_at %>
+      </div>
+      <div class="form-grop">
+        <label for="order-address">配送先</label>
+        <%= @address.postal_code.address %>
+      </div>
+      <div class="form-grop">
+        <label for="order-pay">支払方法</label>
+        <%= @order.payment_method %>
+      </div>
+      <div class="form-grop">
+        <label for="order-status">注文ステータス</label>
+        <%= select :status,:name,Order.statuses.keys.to_a %>
+        <%= select :status,:name,Order.statuses.values.to_a %>
+        <%= link_to "更新", class: "btn btn-success" %>
+      </div>
+
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>制作ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @order.name %></td>
+          <td><%= @order.shipping_price %></td>
+          <td><%= @order.quantity %></td>
+          <td><%= @order. %></td>
+          <td>
+            <%= select :production_status,:name,OrderProduct.statuses.keys.to_a %>
+            <%= select :production_status,:name,OrderProduct.statuses.values.to_a %>
+          </td>
+        </tr>
+      </tbody>
+
+  </div>
+</div>

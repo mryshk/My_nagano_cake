@@ -3,6 +3,9 @@
     <!--<div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">-->
       <p id="notice"></p>
       <h4>商品一覧</h4>
+      <div class="col-12 clearfix">
+        <div class="float-right"><%= link_to "新規登録", new_admin_product_path %></div>
+      </div>
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
@@ -20,13 +23,20 @@
             <td><%= product.id %></td>
             <td><%= link_to product.name,admin_product_path(product.id) %></td>
             <td><%= product.tax_out_price %></td>
-            <td><%= product.genre_id %></td>
-            <td><%= product.is_active %></td>
+            <td><%= product.genre.genre_name%></td>
+            <td>
+              <% if product.is_active == true %>
+                <p><i class="text-success">販売中</i></p>
+              <% else  product.is_active == false %>
+                <p><i class="fas fa-bullseye blue">販売中止中</i></p>
+              <% end %>
+            </td>
           </tr>
           <% end %>
-          <%= paginate @products %>
         </tbody>
       </table>
+      <%= paginate @products %>
     </div>
   </div>
 </div>
+
