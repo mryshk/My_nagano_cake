@@ -2,6 +2,7 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @product = Product.find(params[:product_id])
     @address = Address.find(params[:address_id])
   end
 

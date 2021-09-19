@@ -4,7 +4,7 @@
     <h4>注文履歴詳細</h4>
     　<div class="form-grop">
         <label for="order-name">購入者</label>
-        <%= @order..member.last_name.first_name %>
+        <%= @order.member.last_name %><%= @order.member.first_name %>
       </div>
       <div class="form-grop">
         <label for="order-datetime">注文日</label>
@@ -12,7 +12,8 @@
       </div>
       <div class="form-grop">
         <label for="order-address">配送先</label>
-        <%= @address.postal_code.address %>
+        <%= @address.postal_code %><%= @address.address %>
+        <%= @address.name %>
       </div>
       <div class="form-grop">
         <label for="order-pay">支払方法</label>
@@ -36,8 +37,11 @@
       </thead>
       <tbody>
         <tr>
-          <td><%= @order.name %></td>
-          <td><%= @order.shipping_price %></td>
+          <td><%= @product.name %></td>
+          <td>
+            <% @product_price = @product.tax_out_price * 1.1 %>
+            <%= @product_price.floor.to_s(:delimited) %>
+          </td>
           <td><%= @order.quantity %></td>
           <td><%= @order. %></td>
           <td>
