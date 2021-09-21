@@ -1,24 +1,26 @@
-<header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-light text-dark">
+<header class="shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light text-dark">
     <div class = "container">
-      <nav class = "nav navbar-nav navbar-left title">
+      <div class = "nav navbar-nav navbar-left title">
       <% if admin_signed_in? %>
       <%# 管理者がログインした時　%>
-        <%= link_to "Nagano CAKE", admin_orders_path, class: "btn btn-outline-dark btn-lg" %>
+        <%= link_to "Nagano CAKE", admin_orders_path, class: "btn btn-outline-dark btn-lg navbar-brand"  %>
       <% else %>
     　 <%# 顧客顧客がログインした時　%>
-    　   <%= link_to "Nagano CAKE",  public_root_path, class: "btn btn-outline-dark btn-lg" %>
+    　   <%= link_to "Nagano CAKE",  public_root_path, class: "btn btn-outline-dark btn-lg navbar-brand" %>
       <% end %>
-      </nav>
-      <nav>
-        <ul class = "nav navbar-nav navbar-right">
+      </div>
+      <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon "></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class = "navbar-nav ml-auto">
           <% if member_signed_in? %>
           <!--カスタマーがログインしている時 -->
           <li class="header-name">
             ようこそ、<%= (current_member.first_name) %>さん！
           </li>
-
-          <li>
+          <li class="nav-item">
             <%= link_to "マイページ", public_member_path(current_member), class: "btn  btn-outline-dark mr-5" %>
           </li>
           <li>
@@ -63,12 +65,12 @@
           </li>
           <% end %>
         </ul>
-        <div class="d-flex justify-content-end mt-3">
-          <%= form_with url: public_search_path, method: :get,  local: true do |f|%>
-          <%= f.text_field :keyword, value: @keyword ,placeholder: "Search",class: "form-control pull-right",style: "width:300px;"%>
-          <% end %>
-        </div>
-      </nav>
+      </div>
+      <div class="d-flex justify-content-end mt-3">
+        <%= form_with url: public_search_path, method: :get,  local: true do |f|%>
+        <%= f.text_field :keyword, value: @keyword ,placeholder: "Search",class: "form-control form-inline",style: "width:300px;"%>
+        <% end %>
+      </div>
     </div>
   </nav>
 </header>
