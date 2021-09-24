@@ -66,11 +66,7 @@
           <% end %>
         </ul>
       </div>
-      <div class="d-flex justify-content-end mt-3">
-        <%= form_with url: public_search_path, method: :get,  local: true do |f|%>
-        <%= f.text_field :keyword, value: @keyword ,placeholder: "Search",class: "form-control form-inline",style: "width:300px;"%>
-        <% end %>
-      </div>
+
     </div>
   </nav>
 </header>
