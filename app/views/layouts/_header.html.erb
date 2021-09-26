@@ -4,10 +4,10 @@
       <div class = "nav navbar-nav navbar-left title">
       <% if admin_signed_in? %>
       <%# 管理者がログインした時　%>
-        <%= link_to "Nagano CAKE", admin_orders_path, class: "btn btn-outline-dark btn-lg navbar-brand"  %>
+        <%= link_to "Nagano Cake", admin_orders_path, class: "btn btn-outline-dark btn-lg navbar-brand"  %>
       <% else %>
     　 <%# 顧客顧客がログインした時　%>
-    　   <%= link_to "Nagano CAKE",  public_root_path, class: "btn btn-outline-dark btn-lg navbar-brand" %>
+    　   <%= link_to "Nagano Cake",  public_root_path, class: "btn btn-outline-dark btn-lg navbar-brand" %>
       <% end %>
       </div>
       <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,9 +17,7 @@
         <ul class = "navbar-nav ml-auto">
           <% if member_signed_in? %>
           <!--カスタマーがログインしている時 -->
-          <li class="header-name">
-            ようこそ、<%= (current_member.first_name) %>さん！
-          </li>
+
           <li class="nav-item">
             <%= link_to "マイページ", public_member_path(current_member), class: "btn  btn-outline-dark mr-5" %>
           </li>
