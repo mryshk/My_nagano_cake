@@ -17,7 +17,6 @@
         <ul class = "navbar-nav ml-auto">
           <% if member_signed_in? %>
           <!--カスタマーがログインしている時 -->
-
           <li class="nav-item">
             <%= link_to "マイページ", public_member_path(current_member), class: "btn  btn-outline-dark mr-5" %>
           </li>
