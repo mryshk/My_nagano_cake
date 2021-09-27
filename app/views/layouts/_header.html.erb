@@ -18,16 +18,16 @@
           <% if member_signed_in? %>
           <!--カスタマーがログインしている時 -->
           <li class="nav-item">
-            <%= link_to "マイページ", public_member_path(current_member), class: "btn  btn-outline-dark mr-5" %>
+            <%= link_to "My page", public_member_path(current_member), class: "btn  btn-outline-dark mr-5" %>
           </li>
           <li>
-            <%= link_to "商品一覧", public_products_path, class: "btn  btn-outline-dark mr-5" %>
+            <%= link_to "Product", public_products_path, class: "btn  btn-outline-dark mr-5" %>
           </li>
           <li>
-            <%= link_to "カート", public_cart_products_path, class: "btn  btn-outline-dark mr-5" %>
+            <%= link_to "Cart", public_cart_products_path, class: "btn  btn-outline-dark mr-5" %>
           </li>
           <li>
-            <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "btn  btn-outline-dark mr-5" %>
+            <%= link_to "Log out", destroy_member_session_path, method: :delete, class: "btn  btn-outline-dark mr-5" %>
           </li>
           <% elsif admin_signed_in? %>
           <!-- 管理者がログインしている時 -->
