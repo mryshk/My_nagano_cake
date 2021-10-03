@@ -1,0 +1,11 @@
+table.col-7.mx-auto.table
+  thead.thead-light
+    tr
+      th.text-center
+        | ジャンル検索
+  tbody
+    - @genres.each do |genre|
+      tr
+        td.text-center
+          = link_to public_search_genre_path(genre_id: genre.id),class:"text-dark" do
+            = genre.genre_name

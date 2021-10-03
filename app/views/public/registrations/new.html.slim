@@ -1,0 +1,41 @@
+.container
+  .row.mt-5
+    .col-10
+      h2.text-center
+        | 新規会員登録
+      = form_with model: @member, url: member_registration_path,method: :post, local: true do |f|
+        = render "public/shared/error_messages", resource: resource
+        .form-group.mt-5
+          = f.label :名前 ,class:"col-4 mr-2"
+          = f.text_field :first_name , autofocus: true,class: "form-control-static col-3",placeholder:"姓"
+          = f.text_field :last_name ,class: "form-control-static col-3  ",placeholder:"名"
+        .form-group.mt-3
+          = f.label :フリガナ,class:"col-4 mr-2"
+          = f.text_field :first_name_kana ,class: "form-control-static col-3",placeholder:"セイ"
+          = f.text_field :last_name_kana ,class: "form-control-static  col-3",placeholder:"メイ"
+        .form-group.mt-3
+          = f.label :メールアドレス（編集不可）,class:"col-4 mr-2"
+          = f.email_field :email, autocomplete: "email" ,class: "form-control-static col-6"
+        .form-group.mt-3
+          = f.label :郵便番号（ハイフンなし７文字）,class:"col-4 mr-2"
+          = f.text_field :postal_code ,class: "form-control-static col-6",style: "width:200px;"
+        .form-group.mt-3
+          = f.label :住所,class:"col-4 mr-2"
+          = f.text_field :address ,class: "form-control-static col-6"
+        .form-group.mt-3
+          = f.label :電話番号（ハイフンなし）,class:"col-4 mr-2"
+          = f.text_field :phone_number ,class: "form-control-static col-6",style: "width:200px;"
+        .form-group.mt-3
+          = f.label :パスワード（６文字以上）,class:"col-4 mr-2"
+          = f.password_field :password, autocomplete: "new-password" ,class: "form-control-static col-6",style: "width:200px;"
+        .form-group.mt-3
+          = f.label :パスワード（確認用）,class:"col-4 mr-2"
+          = f.password_field :password_confirmation, autocomplete: "new-password",class: "form-control-static col-6",style: "width:200px;"
+        .actions.mt-5.text-center
+          button.btn.btn-info.text-white[style="width: 150px"]
+            | 新規登録
+          - f.submit
+      .mt-5[style="margin-bottom: 200px;"]
+        h3[c]
+          | 既に登録済みの方
+        = render "public/shared/links"

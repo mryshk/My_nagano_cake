@@ -1,0 +1,62 @@
+.container[style="margin-bottom:400px;"]
+  .row.mt-5
+    .col-8.offset-1
+      h4#member-title
+        | マイページ
+      h5#member-title.d-inline-block.mt-4.mr-5
+        | 登録情報
+      button.btn.btn-success.d-inline-block
+        = link_to "編集する", edit_public_member_path(@member),class: "text-white"
+      table#member-table.table.mt-3
+        tr
+          th
+            | 氏名
+          td
+            = @member.first_name
+            = @member.last_name
+        tr
+          th
+            | カナ
+          td
+            = @member.first_name_kana
+            = @member.last_name_kana
+        tr
+          th
+            | 郵便番号
+          td
+            = @member.postal_code
+        tr
+          th
+            | 住所
+          td
+            = @member.address
+        tr
+          th
+            | 電話番号
+          td
+            = @member.phone_number
+        tr
+          th
+            | メールアドレス
+          td
+            = @member.email
+        tr
+          th[style="margin:0;"]
+            | 会員情報
+          td[style="margin:0;"]
+            - if @member.is_deleted == true
+              p[style="margin:0;"]
+                | 退会中
+            - else
+              p[style="margin:0;"]
+                | 会員
+      .mt-5
+        h5#member-title.d-inline-block.mr-5
+          | 配送先
+        button.btn.btn-primary.btn-sm.d-inline-block[style="width:120px;"]
+          = link_to "一覧を見る" ,public_addresses_path,class: "text-white"
+      .mt-3
+        h5#member-title.d-inline-block.mr-4
+          | 注文履歴
+        button.btn.btn-primary.btn-sm.d-inline-block[style="width:120px;"]
+          = link_to "一覧を見る", public_orders_path,class: "text-white"

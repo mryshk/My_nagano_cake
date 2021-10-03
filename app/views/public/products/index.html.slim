@@ -1,0 +1,26 @@
+.container　mt-5[style="margin-bottom:500px;"]
+  .row.mt-5
+    .col-md-4.mt-5
+      = render "public/products/genre", gernres: @genres
+    .col-md-8.offset-md-0.col-9.offset-2.mt-5
+      h2.d-inline
+        | 商品一覧
+      p.d-inline
+        | （全
+        = @all_products.count
+        | 件）
+      #pub_products
+        - @products.each do |product|
+          #pub_product
+            #product_img.card-img-top
+              = attachment_image_tag product,:image ,fallback: "no_image.png" ,class:"card-img"
+            div
+              = link_to public_product_path(product),class: "text-dark" do
+                = product.name
+            div
+              - @product_price = product.tax_out_price * 1.1
+              |  ￥
+              = @product_price.floor.to_s(:delimited)
+              | （税込） 
+  .d-flex.justify-content-center.mt-5
+    = paginate @products

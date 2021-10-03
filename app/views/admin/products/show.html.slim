@@ -1,0 +1,65 @@
+.container.mt-5[style="margin-bottom:250px;"]
+  h4
+    | 商品詳細
+  .row
+    |  　
+    .col-sm-5
+      |  　　　
+      = attachment_image_tag @product, :image, size: "300x200"
+    .col-sm-2
+      .field
+        p
+          | 商品名
+      br
+      .field
+        p
+          | 商品説明
+      br
+      .field
+        p
+          | ジャンル
+      br
+      .field
+        p
+          | 税込価格
+          br
+          | （税抜価格）
+      br
+      .field
+        p
+          | 販売ステータス
+      br
+    .col-sm-4
+      .field
+        p
+          =@product.name
+      br
+      .field
+        p
+          = @product.explanation
+      br
+      .field
+        p
+          = @product.genre.genre_name
+      br
+      .field
+        p
+          - @product_price = @product.tax_out_price * 1.1
+          |  　
+          = @product_price.floor.to_s(:delimited)
+          |  　(
+          = @product.tax_out_price.floor.to_s(:delimited)
+          | )円 
+      br
+      br
+      .field
+        p
+          - if @product.is_active == true
+            i.text-success
+              | 販売中
+            - else  product.is_active == false
+            i.fas.fa-bullseye.blue
+              | 販売中止中
+      br
+      .form-grop
+        = link_to "編集する",edit_admin_product_path(@product.id), class: "btn btn-success"

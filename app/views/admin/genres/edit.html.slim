@@ -1,0 +1,11 @@
+.container
+  .row
+    .col-md-5
+      h4.mt-3
+        | ジャンル編集
+      = form_with model:@genre,url:"/admin/genres/#{@genre.id}", local: true do |f|
+        .form-grop
+          label[for="ganre-name"]
+            | ジャンル名
+          = f.text_field :genre_name
+          = f.submit '変更を保存',class: "btn btn-success"

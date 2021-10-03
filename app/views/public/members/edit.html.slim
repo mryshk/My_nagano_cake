@@ -1,0 +1,33 @@
+.container
+  .row.mt-5
+    .col-10
+      = render "public/shared/error_messages",resource: @member
+      h2.mt-5.text-center
+        | 会員情報編集
+      = form_with model: @member, url: public_member_path(@member.id), local: true do |f|
+        .form-group.mt-5
+          = f.label :名前 ,class:"col-4 mr-2"
+          = f.text_field :first_name , autofocus: true,class: "form-control-static col-3",placeholder:"姓"
+          = f.text_field :last_name ,class: "form-control-static col-3  ",placeholder:"名"
+        .form-group.mt-3
+          = f.label :フリガナ,class:"col-4 mr-2"
+          = f.text_field :first_name_kana ,class: "form-control-static col-3",placeholder:"セイ"
+          = f.text_field :last_name_kana ,class: "form-control-static  col-3",placeholder:"メイ"
+        .form-group.mt-3
+          = f.label :メールアドレス（編集不可）,class:"col-4 mr-2"
+          = f.email_field :email, autocomplete: "email" ,class: "form-control-static col-6"
+        .form-group.mt-3
+          = f.label :郵便番号（ハイフンなし７文字）,class:"col-4 mr-2"
+          = f.text_field :postal_code ,class: "form-control-static col-6",style: "width:200px;"
+        .form-group.mt-3
+          = f.label :住所,class:"col-4 mr-2"
+          = f.text_field :address ,class: "form-control-static col-6"
+        .form-group.mt-3
+          = f.label :電話番号（ハイフンなし）,class:"col-4 mr-2"
+          = f.text_field :phone_number ,class: "form-control-static col-6",style: "width:200px;"
+        .actions.mt-5.text-center[style="margin-bottom: 200px;"]
+          button.btn.btn-success.text-white
+            | 編集内容を保存
+          - f.submit
+          button.btn.btn-danger.text-white.ml-5
+            = link_to "退会する",public_members_path,method: :get ,class: "text-white"

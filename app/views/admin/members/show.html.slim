@@ -1,0 +1,81 @@
+.container
+  h2.head-line.title_h2.text-dark.p-1.m-5.rounded-lg.border.border-dark
+    = @member.last_name
+    = @member.first_name
+    | さんの会員詳細 
+  .row.mt-4
+    .col-sm-3
+      .field
+        p
+          | 顧客ID
+      br
+      .field
+        p
+          | 氏名
+      br
+      .field
+        p
+          | フリガナ
+      br
+      .field
+        p
+          | 郵便番号
+      br
+      .field
+        p
+          | 住所
+      br
+      .field
+        p
+          | 電話番号
+      br
+      .field
+        p
+          | メールアドレス
+      br
+      .field
+        p
+          | 会員ステータス
+    .col-sm-6
+      .field
+        p
+          = @member.id
+      br
+      .field
+        p
+          = @member.last_name
+          = @member.first_name
+      br
+      .field
+        p
+          = @member.last_name_kana
+          = @member.first_name_kana
+      br
+      .field
+        p
+          = @member.postal_code
+      br
+      .field
+        p
+          = @member.address
+      br
+      .field
+        p
+          = @member.phone_number
+      br
+      .field
+        p
+          = @member.email
+      br
+      .field
+        - if @member.is_deleted == true
+          p
+            i.text-light
+            | 退会
+        - elsif @member.is_deleted == false
+          p
+            i.text-success
+              | 有効
+  .col-md-7.col-md-offset-7.mb-5.mt-2.text-right
+    = link_to "編集する",edit_admin_member_path(@member), class: "glyphicon glyphicon-pencil btn btn-success mr-5"
+    = link_to "会員一覧を見る",admin_members_path(@member), class: "glyphicon glyphicon-pencil btn btn-primary mr-5"

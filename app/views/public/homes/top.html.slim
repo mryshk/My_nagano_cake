@@ -1,0 +1,37 @@
+.container　mt-5[style="margin-bottom:500px;"]
+  .row.mt-5
+    .col-4.mt-5
+      = render "public/products/genre", gernres: @genres
+    .col-8.mt-5
+      #top-card.card.col-11
+        img#top-card-img.card-img[src="assets/media-138-600x600-1.jpg"]
+        #top-card-text.card-img-overlay.text-dark.text-center
+          p
+            | ようこそ、
+            strong
+              | ながのCAKE
+            | へ！
+            br
+            |  このサイトは、ケーキ販売のECサイトになります。
+            br
+            |  会員でない方も商品の閲覧はできますが、
+            br
+            |  購入には会員登録が必要になります。 
+      .mt-5
+        h3
+          | 新着商品
+        #pub_products
+          - @products.each do |product|
+            #pub_product
+              .card-img-top
+                = attachment_image_tag product,:image ,:fill,150,100,fallback: "no_image.png",size: "150x100"
+              div
+                = link_to public_product_path(product),class:"text-dark" do
+                  = product.name
+              div
+                - @product_price = product.tax_out_price * 1.1
+                |  ￥
+                = @product_price.floor.to_s(:delimited)
+                | （税込） 
+      button.btn.btn-outline-info.mt-5
+        = link_to "全ての商品を見る", public_products_path ,class: "text-dark"

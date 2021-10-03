@@ -1,0 +1,43 @@
+.container
+  .row
+    p#notice
+    h4
+      | 商品一覧
+    .col-12.clearfix
+      .float-right
+        = link_to "新規登録", new_admin_product_path
+    table.table.table-hover.table-inverse
+      thead
+        tr
+          th
+            | 商品ID
+          th
+            | 商品名
+          th
+            | 税抜価格
+          th
+            | ジャンル
+          th
+            | ステータス
+          th
+      tbody
+        - @products.each do |product|
+          tr
+            td
+              = product.id
+            td
+              = link_to product.name,admin_product_path(product.id)
+            td
+              = product.tax_out_price.floor.to_s(:delimited)
+            td
+              = product.genre.genre_name
+            td
+              - if product.is_active == true
+                p
+                  i.text-success
+                    | 販売中
+                - else  product.is_active == false
+                p
+                  i.fas.fa-bullseye.blue
+                    | 販売中止中
+    = paginate @products
